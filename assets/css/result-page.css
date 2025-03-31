@@ -51,7 +51,7 @@ a {
   text-decoration: none;
 }
 
-.percContainer {
+#percContainer {
   height: 250px;
   width: 250px;
   border: 50px solid #c2128d;
@@ -61,6 +61,15 @@ a {
   margin-bottom: 3rem;
   margin-top: 3rem;
   display: inline-block;
+}
+
+#percBorder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
 }
 
 .correct,
@@ -83,4 +92,16 @@ a {
 }
 .wrong {
   right: 10%;
+  font-size: 3rem;
+}
+
+.wrong .correct,
+p {
+  font-weight: bold;
+}
+
+#wrongAnswer,
+#correctAnswer {
+  font-weight: 100;
+  font-size: 1.2rem;
 }
