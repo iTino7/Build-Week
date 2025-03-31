@@ -1,69 +1,45 @@
-const risposte = {
+const domande = {
   response_code: 0,
   results: [
     {
       type: "multiple",
       difficulty: "easy",
       category: "Science: Computers",
-      question: "What amount of bits commonly equals one byte?",
-      correct_answer: "8",
-      incorrect_answers: ["1", "2", "64"],
+      question: "Which programming language shares its name with an island in Indonesia?",
+      correct_answer: "Java",
+      incorrect_answers: ["Python", "C", "Jakarta"],
     },
     {
       type: "multiple",
       difficulty: "easy",
       category: "Science: Computers",
-      question: "The Electron computer was released in Britain during 1983 for the home computing market, by which company? ",
-      correct_answer: "Acorn Computers",
-      incorrect_answers: ["Sinclair Research", "Amstrad PLC", "Commodore Business Machines"],
+      question: "What does the computer software acronym JVM stand for?",
+      correct_answer: "Java Virtual Machine",
+      incorrect_answers: ["Java Vendor Machine", "Java Visual Machine", "Just Virtual Machine"],
     },
     {
       type: "multiple",
       difficulty: "easy",
       category: "Science: Computers",
-      question: "What is the most preferred image format used for logos in the Wikimedia database?",
-      correct_answer: ".svg",
-      incorrect_answers: [".png", ".jpeg", ".gif"],
+      question: "What does GHz stand for?",
+      correct_answer: "Gigahertz",
+      incorrect_answers: ["Gigahotz", "Gigahetz", "Gigahatz"],
     },
     {
       type: "multiple",
       difficulty: "easy",
       category: "Science: Computers",
-      question: "What does the &quot;MP&quot; stand for in MP3?",
-      correct_answer: "Moving Picture",
-      incorrect_answers: ["Music Player", "Multi Pass", "Micro Point"],
+      question: "What programming language was GitHub written in?",
+      correct_answer: "Ruby",
+      incorrect_answers: ["JavaScript", "Python", "Lua"],
     },
     {
       type: "boolean",
       difficulty: "easy",
       category: "Science: Computers",
-      question: "The logo for Snapchat is a Bell.",
-      correct_answer: "False",
-      incorrect_answers: ["True"],
-    },
-    {
-      type: "multiple",
-      difficulty: "easy",
-      category: "Science: Computers",
-      question: "This mobile OS held the largest market share in 2012.",
-      correct_answer: "iOS",
-      incorrect_answers: ["Android", "BlackBerry", "Symbian"],
-    },
-    {
-      type: "multiple",
-      difficulty: "easy",
-      category: "Science: Computers",
-      question: "How long is an IPv6 address?",
-      correct_answer: "128 bits",
-      incorrect_answers: ["32 bits", "64 bits", "128 bytes"],
-    },
-    {
-      type: "multiple",
-      difficulty: "easy",
-      category: "Science: Computers",
-      question: "In computing, what does MIDI stand for?",
-      correct_answer: "Musical Instrument Digital Interface",
-      incorrect_answers: ["Musical Interface of Digital Instruments", "Modular Interface of Digital Instruments", "Musical Instrument Data Interface"],
+      question: "The Windows ME operating system was released in the year 2000.",
+      correct_answer: "True",
+      incorrect_answers: ["False"],
     },
     {
       type: "multiple",
@@ -77,74 +53,112 @@ const risposte = {
       type: "boolean",
       difficulty: "easy",
       category: "Science: Computers",
-      question: "A Mac is not a PC",
+      question: "Ada Lovelace is often considered the first computer programmer.",
+      correct_answer: "True",
+      incorrect_answers: ["False"],
+    },
+    {
+      type: "boolean",
+      difficulty: "easy",
+      category: "Science: Computers",
+      question: "&quot;HTML&quot; stands for Hypertext Markup Language.",
+      correct_answer: "True",
+      incorrect_answers: ["False"],
+    },
+    {
+      type: "multiple",
+      difficulty: "easy",
+      category: "Science: Computers",
+      question: "How many values can a single byte represent?",
+      correct_answer: "256",
+      incorrect_answers: ["8", "1", "1024"],
+    },
+    {
+      type: "boolean",
+      difficulty: "easy",
+      category: "Science: Computers",
+      question: "Time on Computers is measured via the EPOX System.",
       correct_answer: "False",
       incorrect_answers: ["True"],
     },
   ],
 };
 
-// Variabile globale per tracciare la domanda corrente
-let currentQuestionIndex = 0;
+let index = 0; //inizializiamo l'indice per scorrere le domande a 0
+let risposteGiuste = 0;
+let risposteTotali = 0;
+let media = 0;
 
-// Funzione per cambiare i testi dei bottoni
-function cambiaRisposte() {
-  let bottoni = document.querySelectorAll("button");
-
-  // Se siamo oltre la lunghezza delle domande, esce
-  if (currentQuestionIndex >= risposte.results.length) {
-    alert("Quiz completato!");
-    return;
-  }
-
-  // Ottieni la domanda corrente
-  let currentQuestion = risposte.results[currentQuestionIndex];
-
-  // Aggiorna l'h1 con la domanda corrente
-  let headerElement = document.querySelector("h1");
-  if (headerElement) {
-    headerElement.innerHTML = currentQuestion.question;
-  }
-
-  // Aggiorna il contatore delle domande
-  let questionCounter = document.querySelector("p > span");
-  if (questionCounter) {
-    questionCounter.textContent = `${currentQuestionIndex + 1}/${risposte.results.length}`;
-  }
-
-  // Crea un array con tutte le risposte (corretta + incorrette)
-  let allAnswers = [currentQuestion.correct_answer, ...currentQuestion.incorrect_answers];
-
-  // Mescola le risposte per non avere sempre la risposta corretta nella stessa posizione
-  shuffleArray(allAnswers);
-
-  // Assegna le risposte ai bottoni (se ci sono abbastanza bottoni)
-  for (let i = 0; i < bottoni.length && i < allAnswers.length; i++) {
-    bottoni[i].innerHTML = allAnswers[i];
-  }
-
-  // Quando un bottone viene cliccato, incrementa l'indice e cambia la domanda
-  bottoni.forEach((button) => {
-    button.onclick = () => {
-      currentQuestionIndex++; // Passa alla domanda successiva
-      cambiaRisposte(); // Cambia le risposte
-    };
+// Funzione per gestire la selezione delle risposte
+function selected(e) {
+  document.querySelectorAll("button:not(.prosegui)").forEach((bottone) => {
+    bottone.classList.remove("selected");
   });
+  let bottone = e.target;
+  bottone.classList.add("selected");
 }
 
-// Funzione per mescolare un array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+// Funzione per valutare la risposta corrente
+function valutaRisposta() {
+  const domanda = domande.results[index - 1]; // Usa index-1 perché index è già stato incrementato
+  const bottoneSelezionato = document.querySelector("button.selected:not(.prosegui)");
+
+  if (bottoneSelezionato) {
+    if (bottoneSelezionato.innerText === domanda.correct_answer) {
+      risposteGiuste += 1;
+    }
+    risposteTotali += 1;
+    media = (risposteGiuste / risposteTotali) * 100;
   }
-  return array;
+
+  console.log(risposteGiuste);
 }
 
-// Inizializza il quiz quando il DOM è completamente caricato
-document.addEventListener("DOMContentLoaded", function () {
-  cambiaRisposte();
+function cambiaDomande() {
+  if (index < domande.results.length) {
+    let domanda = domande.results[index];
+    // Aggiorna il contatore delle domande
+
+    // Pulisce la box prima di aggiungere la nuova domanda
+    document.querySelector(".box").innerHTML = "";
+    document.querySelector(".button").innerHTML = "";
+
+    //Creo le domande dinamicamente
+    let myH1 = document.createElement("h1");
+    myH1.innerText = domanda.question;
+    document.querySelector(".box").appendChild(myH1);
+
+    //Prendo le risposte e le mischio in modo che la risposta esatta sia sempre in una posizione diversa
+    const risposte = [...domanda.incorrect_answers, domanda.correct_answer];
+    risposte.sort(() => Math.random() - 0.5);
+
+    //Creo i bottoni con le domande
+    for (let i = 0; i < risposte.length; i++) {
+      let btnAnswer = document.createElement("button");
+      btnAnswer.innerText = risposte[i];
+      document.getElementsByClassName("button")[0].appendChild(btnAnswer);
+
+      // Aggiungi event listener a ogni bottone di risposta
+      btnAnswer.addEventListener("click", selected);
+    }
+
+    index++;
+  } else {
+    window.open(`result.html`, `_self_`);
+  }
+}
+
+// Configura l'handler del pulsante prosegui una sola volta
+document.querySelector(".prosegui").addEventListener("click", () => {
+  if (index > 0) {
+    // Se non è la prima domanda, valuta la risposta precedente
+    valutaRisposta();
+  }
+  cambiaDomande();
 });
+
+// Avvia il quiz
+cambiaDomande();
 
 let countdown; // Variabile globale per il timer
 
