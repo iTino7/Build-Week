@@ -15,16 +15,29 @@
       <h1>Results</h1>
       <h3>The summary of your answers:</h3>
       <div class="vote">
-        <h3 class="correct">Correct</h3>
-        <div class="percContainer">
-          <div class="percBorder"></div>
+        <!-- correct answer -->
+        <h3 class="correct">
+          Correct
+          <p id="percentuale">0%</p>
+          <p id="correctAnswer"><span id="correctAnswerSpan"></span> question</p>
+        </h3>
+
+        <!-- percCircle -->
+        <div id="percContainer">
+          <div id="percBorder"></div>
         </div>
-        <h3 class="wrong">Wrong</h3>
+
+        <!-- wrong answer -->
+        <h3 class="wrong">
+          Wrong
+          <p id="percentuale">0%</p>
+          <p id="wrongAnswer"><span id="wrongAnswerSpan"></span> question</p>
+        </h3>
       </div>
     </main>
 
     <footer>
-      <button onclick="window.open(`PAGINA FEEDBACK`,`_BLANK`)">RATE US</button>
+      <button onclick="window.open(`feedback.html`,`_BLANK`)">RATE US</button>
     </footer>
     <script src="./assets/JS/result.js"></script>
   </body>
