@@ -1,0 +1,10 @@
+/* STAR */
+
+.containerStar img {
+    margin: 6px 10px 30px 0;
+}
+
+.star img {
+    color: #0A103B;
+    cursor: pointer;
+}
