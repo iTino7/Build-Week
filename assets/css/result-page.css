@@ -52,9 +52,12 @@ a {
 }
 
 .percContainer {
-  height: 150px;
-  width: 150px;
-  border: 20px solid #c2128d;
+  height: 250px;
+  width: 250px;
+  border: 50px solid #c2128d;
   border-radius: 50%;
   text-align: center;
+  margin: auto;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
