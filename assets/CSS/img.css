@@ -1,0 +1,10 @@
+/* IMG */
+
+.imgTitle {
+    margin: 30px;
+}
+
+.imgTitle img {
+    width: 200px;
+    height: auto;
+}

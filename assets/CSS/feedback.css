@@ -1,0 +1,11 @@
+/* MAIN FEEDBACK */
+
+.containerFeedback {
+    text-align: center;
+    width: 750px;
+    margin-inline: auto;
+}
+
+.containerText h1 {
+    font-size: 48px;
+}
