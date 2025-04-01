@@ -1,19 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 body {
     font-family: "Inter", sans-serif;
-    background-image: url("/assets/bg.jpg");
+    background-image: url("/assets/img/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    color: #E7E7EB;
+    color: #e7e7eb;
 }
-
 
 /* Le P del containerText e del containerButton */
 .textP {
@@ -23,8 +16,6 @@ body {
     margin: 34px 33px;
 }
 
-/* IMG */
-
 .imgTitle {
     margin: 30px;
 }
@@ -33,8 +24,6 @@ body {
     width: 200px;
     height: auto;
 }
-
-/* MAIN FEEDBACK */
 
 .containerFeedback {
     text-align: center;
@@ -46,18 +35,24 @@ body {
     font-size: 48px;
 }
 
-/* STAR */
-
-.containerStar img {
-    margin: 6px 10px 30px 0;
+#stars-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
 }
 
 .star img {
-    color: #0A103B;
+    width: 40px;
+    height: 40px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
     cursor: pointer;
 }
 
-/* CONTAINER FORM */
+.star.active img {
+    filter: grayscale(0%);
+}
 
 .containerForm form input,
 button {
@@ -71,9 +66,9 @@ form #text {
     background-color: transparent;
     padding: 20px 0 20px 16px;
     margin-bottom: 20px;
-    color: #E7E7EB;
+    color: #e7e7eb;
     font-size: 20px;
-    border-bottom: 2px solid #C2138D;
+    border-bottom: 2px solid #c2138d;
 }
 
 form input {
@@ -92,9 +87,9 @@ form button {
     margin-top: 30px;
     border: none;
     padding: 20px 60px;
-    background-color: #01FFFF;
+    background-color: #01ffff;
     text-transform: uppercase;
-    color: #0A103B;
+    color: #0a103b;
     cursor: pointer;
 }
 
