@@ -6,6 +6,7 @@ body {
   background-image: url(../bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 #logo {
@@ -87,10 +88,12 @@ a {
 }
 .correct {
   left: 10%;
+  font-weight: 400;
   font-size: 3rem;
 }
 .wrong {
   right: 10%;
+  font-weight: 400;
   font-size: 3rem;
 }
 
@@ -121,4 +124,16 @@ p {
   font-size: 0.8rem;
   display: inline-block;
   margin-top: 2rem;
+}
+
+svg {
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+#wrongAnswer {
+  text-align: right;
+}
+
+#correctAnswer {
+  text-align: left;
 }
