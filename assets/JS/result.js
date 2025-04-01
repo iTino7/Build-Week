@@ -3,7 +3,12 @@ document.getElementById("correctAnswerSpan").innerHTML = "3/10";
 
 document.getElementById("wrongAnswerSpan").innerHTML = "7/10";
 
-console.log(window.myApp.media);
+const votiPositivi =
+const votiNegativi = votiTotali - votiPositivi;
+
+const votiTotali = localStorage.getItem("media");
+console.log(votiTotali);
+
 /*
 if(voto > 60){
 document.getElementById("percBorder").innerHTML = "promosso";
