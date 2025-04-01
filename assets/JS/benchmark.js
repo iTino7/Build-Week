@@ -110,6 +110,7 @@ function valutaRisposta() {
     }
     risposteTotali += 1;
     window.myApp.media = (risposteGiuste / risposteTotali) * 100;
+    localStorage.setItem("media", window.myApp.media);
   }
 
   console.log(risposteGiuste);
@@ -186,7 +187,7 @@ function startTimer(duration) {
 }
 
 // Associa il timer ai bottoni senza avviarlo immediatamente
-document.querySelectorAll("button").forEach((bottone) => {
+document.querySelectorAll(".prosegui").forEach((bottone) => {
   bottone.addEventListener("click", () => {
     startTimer(10); // Ogni volta che si clicca, ferma il vecchio timer e ne avvia uno nuovo
     cambiaRisposte(); // Cambia le risposte
