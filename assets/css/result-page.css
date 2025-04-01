@@ -81,6 +81,24 @@ a {
   margin: 0;
 }
 
+.correct p {
+  margin-top: -0.6rem;
+  text-align: left;
+}
+
+.wrong p {
+  margin-top: -0.6rem;
+  text-align: right;
+}
+
+#correctAnswer {
+  margin-top: -3rem;
+}
+
+#wrongAnswer {
+  margin-top: -3rem;
+}
+
 .vote {
   position: relative;
   text-align: center;
