@@ -87,7 +87,8 @@ const domande = {
 let index = 0; //inizializiamo l'indice per scorrere le domande a 0
 let risposteGiuste = 0;
 let risposteTotali = 0;
-let media = 0;
+window.myApp = window.myApp || {};
+window.myApp.media = 0;
 
 // Funzione per gestire la selezione delle risposte
 function selected(e) {
@@ -108,7 +109,7 @@ function valutaRisposta() {
       risposteGiuste += 1;
     }
     risposteTotali += 1;
-    media = (risposteGiuste / risposteTotali) * 100;
+    window.myApp.media = (risposteGiuste / risposteTotali) * 100;
   }
 
   console.log(risposteGiuste);
@@ -146,7 +147,7 @@ function cambiaDomande() {
     questionCounter.textContent = `${index + 1}/${domande.results.length}`;
     index++;
   } else {
-    window.open(`result.html`, `_self_`);
+    window.open(`result.html`, `_self`);
   }
 }
 
