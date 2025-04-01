@@ -85,9 +85,10 @@ const domande = {
 };
 
 let index = 0; //inizializiamo l'indice per scorrere le domande a 0
-let risposteGiuste = 0;
-let risposteTotali = 0;
+
 window.myApp = window.myApp || {};
+window.myApp.risposteGiuste = 0;
+window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 
 // Funzione per gestire la selezione delle risposte
@@ -106,14 +107,12 @@ function valutaRisposta() {
 
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
-      risposteGiuste += 1;
+      window.myApp.risposteGiuste += 1;
     }
-    risposteTotali += 1;
-    window.myApp.media = (risposteGiuste / risposteTotali) * 100;
+    window.myApp.risposteTotali += 1;
+    window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
     localStorage.setItem("media", window.myApp.media);
   }
-
-  console.log(risposteGiuste);
 }
 
 function cambiaDomande() {
