@@ -171,7 +171,7 @@ function startTimer(duration) {
   let timeLeft = duration;
   let textElement = document.getElementById("timer-text");
   let animation = document.getElementById("timer-animation");
-  let tempo = document.querySelector("circle");
+  let tempo = document.querySelectorAll("circle")[1];
 
   clearInterval(countdown);
   animation.beginElement();
@@ -179,7 +179,7 @@ function startTimer(duration) {
     textElement.textContent = timeLeft;
     timeLeft--;
 
-    if (timeLeft < 0) {
+    if (timeLeft < 1) {
       clearInterval(countdown);
       cambiaDomande();
       startTimer(10);
@@ -205,5 +205,3 @@ document.querySelectorAll(".prosegui").forEach((bottone) => {
 });
 
 startTimer(10);
-
-let ciao = document.querySelector("#timer-animation");
