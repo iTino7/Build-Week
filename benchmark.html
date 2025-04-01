@@ -10,11 +10,16 @@
     <header>
       <img src="./assets/epicode_logo.png" alt="Epicode logo" />
       <svg id="timer-svg" width="80" height="80" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" stroke="cyan" stroke-width="10" fill="none" stroke-dasharray="251.2" stroke-dashoffset="0" transform="rotate(-90 50 50)">
+        <!--Creo il primo cerchio per dare il bordo-->
+        <circle cx="50" cy="50" r="40" stroke-width="10" fill="none" />
+        <!--Creo il secondo cerchio per dare il colore grigio-->
+        <circle cx="50" cy="50" r="40" stroke="grey" stroke-width="10" fill="none" stroke-dasharray="251.2" stroke-dashoffset="0" transform="rotate(-90 50 50)">
           <!-- Animazione per diventare trasparente -->
           <animate id="timer-animation" attributeName="stroke-dashoffset" from="0" to="251.2" dur="10s" begin="indefinite" fill="freeze" />
         </circle>
-        <text id="timer-text" x="50" y="55" font-size="20" fill="white" text-anchor="middle">10</text>
+        <text id="timer-textUp" x="35" y="32" font-size="6" fill="white" text-anchor="top">SECONDS</text>
+        <text id="timer-text" x="50" y="60" font-size="35" fill="white" text-anchor="middle">10</text>
+        <text id="timer-textDown" x="35" y="69" font-size="6" fill="white" text-anchor="top">REMAINING</text>
       </svg>
     </header>
     <div class="box"></div>
@@ -22,7 +27,7 @@
     <div class="prosegui">
       <button>Prosegui</button>
     </div>
-    <p>QUESTION <span></span></p>
+    <p>QUESTION <span class="index"></span> <span class="viola">/ 10</span></p>
     <script src="./assets/JS/benchmark.js"></script>
   </body>
 </html>

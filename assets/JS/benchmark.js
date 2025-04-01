@@ -145,8 +145,8 @@ function cambiaDomande() {
       btnAnswer.addEventListener("click", selected);
     }
 
-    let questionCounter = document.querySelector("p > span");
-    questionCounter.textContent = `${index + 1}/${domande.results.length}`;
+    let questionCounter = document.querySelector(".index");
+    questionCounter.textContent = `${index + 1}`;
     index++;
   } else {
     window.open(`result.html`, `_self`);
@@ -171,10 +171,10 @@ function startTimer(duration) {
   let timeLeft = duration;
   let textElement = document.getElementById("timer-text");
   let animation = document.getElementById("timer-animation");
+  let tempo = document.querySelector("circle");
 
   clearInterval(countdown);
   animation.beginElement();
-
   countdown = setInterval(() => {
     textElement.textContent = timeLeft;
     timeLeft--;
@@ -183,6 +183,15 @@ function startTimer(duration) {
       clearInterval(countdown);
       cambiaDomande();
       startTimer(10);
+    }
+    if (timeLeft < 5) {
+      tempo.style.stroke = "yellow";
+    }
+    if (timeLeft < 3) {
+      tempo.style.stroke = "red";
+    }
+    if (timeLeft > 5) {
+      tempo.style.stroke = "cyan";
     }
   }, 1000);
 }
@@ -196,3 +205,5 @@ document.querySelectorAll(".prosegui").forEach((bottone) => {
 });
 
 startTimer(10);
+
+let ciao = document.querySelector("#timer-animation");
