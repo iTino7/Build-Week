@@ -1,9 +1,9 @@
 //js result
-
 document.getElementById("correctAnswerSpan").innerHTML = "3/10";
 
 document.getElementById("wrongAnswerSpan").innerHTML = "7/10";
 
+console.log(window.myApp.media);
 /*
 if(voto > 60){
 document.getElementById("percBorder").innerHTML = "promosso";
