@@ -9,7 +9,7 @@ function createStars() {
     const starDiv = document.createElement("div");
     starDiv.classList.add("star");
     const starImg = document.createElement("img");
-    starImg.src = "./assets/img/star.svg"; // Immagine della stella
+    starImg.src = "./assets/star.svg"; // Immagine della stella
     starImg.alt = "star";
     starDiv.appendChild(starImg);
     starsContainer.appendChild(starDiv);
@@ -39,7 +39,7 @@ function highlightStars(index) {
   });
 }
 
-// Gestisci il click sulle stelle per selezionare il voto
+// Gestisci il clic sulle stelle per selezionare il voto
 starsContainer.addEventListener("click", (event) => {
   const index = [...starsContainer.children].indexOf(event.target.parentNode);
   if (index >= 0) {
