@@ -10,8 +10,9 @@ body {
 }
 
 #logo {
-  width: 11rem;
-  margin-left: 4rem;
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 h1 {
