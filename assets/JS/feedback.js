@@ -39,7 +39,7 @@ function highlightStars(index) {
   });
 }
 
-// Gestisci il clic sulle stelle per selezionare il voto
+// Gestisci il click sulle stelle per selezionare il voto
 starsContainer.addEventListener("click", (event) => {
   const index = [...starsContainer.children].indexOf(event.target.parentNode);
   if (index >= 0) {
