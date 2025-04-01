@@ -8,22 +8,21 @@
   </head>
   <body>
     <header>
-      <img src="./assets/epicode_logo.png" alt="" />
-      <div id="timer-container">
-        <div id="timer-border"></div>
-        <div id="timer">10</div>
-      </div>
+      <img src="./assets/epicode_logo.png" alt="Epicode logo" />
+      <svg id="timer-svg" width="80" height="80" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" stroke="cyan" stroke-width="10" fill="none" stroke-dasharray="251.2" stroke-dashoffset="0" transform="rotate(-90 50 50)">
+          <!-- Animazione per diventare trasparente -->
+          <animate id="timer-animation" attributeName="stroke-dashoffset" from="0" to="251.2" dur="10s" begin="indefinite" fill="freeze" />
+        </circle>
+        <text id="timer-text" x="50" y="55" font-size="20" fill="white" text-anchor="middle">10</text>
+      </svg>
     </header>
-    <div class="box">
-      <h1>How can I create a <strong>checkbox in Html</strong></h1>
+    <div class="box"></div>
+    <div class="button"></div>
+    <div class="prosegui">
+      <button>Prosegui</button>
     </div>
-    <div class="button">
-      <button>input type = "check"</button>
-      <button>input type = "checkbox"</button>
-      <button>checkbox</button>
-      <button>input type = button</button>
-    </div>
-    <p>QUESTION <span>/10</span></p>
+    <p>QUESTION <span></span></p>
     <script src="./assets/JS/benchmark.js"></script>
   </body>
 </html>

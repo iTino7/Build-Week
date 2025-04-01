@@ -2,18 +2,16 @@ header {
   position: relative;
 }
 
-#timer-container {
+body {
+  background-color: rgba(0, 0, 0, 0.425);
+}
+svg {
   position: absolute;
   top: 10px;
   right: 20px;
-  width: 70px;
-  height: 70px;
-  background-color: transparent;
-  border: 10px solid blue; /* Inizialmente blu */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
   opacity: 1;
   transition: opacity 1s linear;
 }
@@ -22,6 +20,7 @@ header {
   font-size: 22px;
   font-weight: bold;
   color: white;
+  padding-top: 1.5rem;
 }
 
 span {
@@ -79,6 +78,14 @@ button {
 }
 button:hover {
   background-color: #ff33a3;
+}
+
+.selected {
+  background-color: #ff33a3;
+}
+
+.prosegui {
+  text-align: end;
 }
 
 .box {
