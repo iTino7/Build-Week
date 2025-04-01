@@ -142,6 +142,8 @@ function cambiaDomande() {
       btnAnswer.addEventListener("click", selected);
     }
 
+    let questionCounter = document.querySelector("p > span");
+    questionCounter.textContent = `${index + 1}/${domande.results.length}`;
     index++;
   } else {
     window.open(`result.html`, `_self_`);
@@ -163,28 +165,21 @@ cambiaDomande();
 let countdown; // Variabile globale per il timer
 
 function startTimer(duration) {
-  let timerElement = document.getElementById("timer");
-  let timerContainer = document.getElementById("timer-container");
   let timeLeft = duration;
+  let textElement = document.getElementById("timer-text");
+  let animation = document.getElementById("timer-animation");
 
-  // Ferma il timer precedente se esiste
   clearInterval(countdown);
-
-  // Imposta lo stile iniziale della ciambella
-  timerContainer.style.border = "10px solid blue";
+  animation.beginElement();
 
   countdown = setInterval(() => {
-    timerElement.textContent = timeLeft;
-
-    let sliceAngle = (1 - timeLeft / duration) * 360;
-    timerContainer.style.borderImage = `conic-gradient(transparent 0deg ${sliceAngle}deg, blue ${sliceAngle}deg 360deg) 1`;
-
+    textElement.textContent = timeLeft;
     timeLeft--;
 
     if (timeLeft < 0) {
       clearInterval(countdown);
-      timerContainer.style.border = "0px solid transparent";
-      alert("Tempo scaduto!");
+      cambiaDomande();
+      startTimer(10);
     }
   }, 1000);
 }
@@ -193,7 +188,8 @@ function startTimer(duration) {
 document.querySelectorAll("button").forEach((bottone) => {
   bottone.addEventListener("click", () => {
     startTimer(10); // Ogni volta che si clicca, ferma il vecchio timer e ne avvia uno nuovo
-    currentQuestionIndex++; // Passa alla domanda successiva
     cambiaRisposte(); // Cambia le risposte
   });
 });
+
+startTimer(10);
