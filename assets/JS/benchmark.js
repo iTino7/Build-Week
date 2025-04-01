@@ -89,7 +89,6 @@ let risposteGiuste = 0;
 let risposteTotali = 0;
 window.myApp = window.myApp || {};
 window.myApp.media = 0;
-let ciao = 0;
 
 // Funzione per gestire la selezione delle risposte
 function selected(e) {
