@@ -32,5 +32,20 @@ if (mediaTotale > 60) {
 }
 
 // riempi il cerchio dinamicamente
-const circle = document.getElementById("percContainer");
-const sliceAngle = percentualePositiva * 3.6;
+const circle = document.querySelector("#perc-svg circle");
+const circonferenza = 251.2;
+const svgColor = circonferenza * (1 - percentualePositiva / 100);
+const svgColorWrong = circonferenza * (1 - percentualeNegativa / 100);
+
+circle.setAttribute("stroke-dasharray", circonferenza);
+circle.setAttribute("stroke-dashoffset", svgColor * -1);
+circle.setAttribute("transform", "rotate (270 50 50)");
+circle.style.transition = "stroke-dashoffset 1s ease-in-out";
+circle.style.stroke = "#00ffff";
+
+const circleWrong = document.querySelector("#perc-svg-wrong");
+circleWrong.setAttribute("stroke-dasharray", circonferenza);
+circleWrong.setAttribute("stroke-dashoffset", svgColorWrong);
+circleWrong.setAttribute("transform", "rotate (270 50 50)");
+circleWrong.style.transition = "stroke-dashoffset 1s ease-in-out";
+circleWrong.style.stroke = "#C2128D";
