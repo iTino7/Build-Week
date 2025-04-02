@@ -7,13 +7,8 @@ const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
 // inserisci le percentuali nelle valutazioni
-if (isNaN(percentualePositiva) && isNaN(percentualeNegativa)) {
-  percentualePositiva = 0;
-  percentualeNegativa = 100;
-} else {
-  document.getElementById("percentualeCorretta").innerHTML = `${percentualePositiva}%`;
-  document.getElementById("percentualeNegativa").innerHTML = `${percentualeNegativa}%`;
-}
+document.getElementById("percentualeCorretta").innerHTML = `${percentualePositiva}%`;
+document.getElementById("percentualeNegativa").innerHTML = `${percentualeNegativa}%`;
 
 // inserisci i voti nelle valutazioni
 document.getElementById("correctAnswerSpan").innerHTML = `${votiPositivi}/10`;
