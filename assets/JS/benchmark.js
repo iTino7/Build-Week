@@ -123,6 +123,11 @@ function valutaRisposta() {
   localStorage.setItem("risposteTotali", window.myApp.risposteTotali);
   localStorage.setItem("media", window.myApp.media);
   localStorage.setItem("risposteSbagliate", window.myApp.risposteSbagliate);
+
+  if (isNaN(window.myApp.media)) {
+    window.myApp.media = 0;
+  }
+  localStorage.setItem("media", window.myApp.media);
 }
 
 function cambiaDomande() {
@@ -160,14 +165,6 @@ function cambiaDomande() {
     window.open(`result.html`, `_self`);
   }
 }
-
-// // Configura l'handler del pulsante prosegui una sola volta
-// document.querySelector(".prosegui").addEventListener("click", () => {
-//   if (index > 0) {
-//     // Se non è la prima domanda, valuta la risposta precedente
-//     valutaRisposta();
-//   }
-// });
 
 // Avvia il quiz
 cambiaDomande();
