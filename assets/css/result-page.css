@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 body {
   font-family: "Inter", sans-serif;
   color: white;
@@ -7,6 +6,7 @@ body {
   background-image: url(../bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 #logo {
@@ -23,7 +23,7 @@ h1 {
 
 h3 {
   text-align: center;
-  font-weight: lighter;
+  font-weight: 300;
   margin-top: -2.3rem;
   font-size: 1.5rem;
   word-spacing: 0.3rem;
@@ -81,6 +81,24 @@ a {
   margin: 0;
 }
 
+.correct p {
+  margin-top: -0.6rem;
+  text-align: left;
+}
+
+.wrong p {
+  margin-top: -0.6rem;
+  text-align: right;
+}
+
+#correctAnswer {
+  margin-top: -3rem;
+}
+
+#wrongAnswer {
+  margin-top: -3rem;
+}
+
 .vote {
   position: relative;
   text-align: center;
@@ -89,10 +107,12 @@ a {
 }
 .correct {
   left: 10%;
+  font-weight: 400;
   font-size: 3rem;
 }
 .wrong {
   right: 10%;
+  font-weight: 400;
   font-size: 3rem;
 }
 
@@ -123,4 +143,16 @@ p {
   font-size: 0.8rem;
   display: inline-block;
   margin-top: 2rem;
+}
+
+svg {
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+#wrongAnswer {
+  text-align: right;
+}
+
+#correctAnswer {
+  text-align: left;
 }
