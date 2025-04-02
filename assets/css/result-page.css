@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 body {
   font-family: "Inter", sans-serif;
   color: white;
@@ -9,8 +10,9 @@ body {
 }
 
 #logo {
-  width: 11rem;
-  margin-left: 4rem;
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 h1 {
