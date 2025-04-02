@@ -2,7 +2,7 @@
 const votiPositivi = localStorage.getItem("risposteGiuste");
 const votiTotali = localStorage.getItem("risposteTotali");
 const mediaTotale = localStorage.getItem("media");
-const votiNegativi = votiTotali - votiPositivi;
+const votiNegativi = localStorage.getItem("risposteSbagliate");
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
