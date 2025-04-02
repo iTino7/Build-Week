@@ -267,9 +267,9 @@ let index = 0; //inizializiamo l'indice per scorrere le domande a 0
 
 window.myApp = window.myApp || {};
 window.myApp.risposteGiuste = 0;
-window.myApp.risposteGiusteStr = "";
+window.myApp.risposteGiusteStr = ["Giuste"];
 window.myApp.risposteSbagliate = 0;
-window.myApp.risposteSbagliateStr = "";
+window.myApp.risposteSbagliateStr = ["Sbagliate"];
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 
@@ -290,18 +290,21 @@ function valutaRisposta() {
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
       window.myApp.risposteGiuste += 1;
-      window.myApp.risposteGiusteStr = "";
+      window.myApp.risposteGiusteStr.push(`${index} ${bottoneSelezionato.innerText}`);
+      console.log(window.myApp.risposteGiusteStr);
     } else {
       window.myApp.risposteSbagliate += 1;
-      window.myApp.risposteSbagliateStr = bottoneSelezionato.innerText;
+      window.myApp.risposteSbagliateStr.push(`${index} ${bottoneSelezionato.innerText}`);
       console.log(window.myApp.risposteSbagliate);
+      console.log(window.myApp.risposteSbagliateStr);
     }
     window.myApp.risposteTotali += 1;
   } else {
     window.myApp.risposteSbagliate += 1;
-    window.myApp.risposteSbagliateStr = "Non hai inserito una risposta";
+    window.myApp.risposteSbagliateStr.push(`${index} Non hai inserito una risposta`);
     window.myApp.risposteTotali += 1;
     console.log(window.myApp.risposteSbagliate);
+    console.log(window.myApp.risposteSbagliateStr);
   }
   window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
   localStorage.setItem("risposteGiuste", window.myApp.risposteGiuste);
