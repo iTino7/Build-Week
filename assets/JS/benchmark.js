@@ -88,6 +88,7 @@ let index = 0; //inizializiamo l'indice per scorrere le domande a 0
 
 window.myApp = window.myApp || {};
 window.myApp.risposteGiuste = 0;
+window.myApp.risposteSbagliate = 0;
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 
@@ -108,12 +109,19 @@ function valutaRisposta() {
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
       window.myApp.risposteGiuste += 1;
+    } else {
+      window.myApp.risposteSbagliate += 1;
+      console.log(window.myApp.risposteSbagliate);
     }
     window.myApp.risposteTotali += 1;
     window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
     localStorage.setItem("risposteGiuste", window.myApp.risposteGiuste);
+    localStorage.setItem("risposteSbagliate", window.myApp.risposteSbagliate);
     localStorage.setItem("risposteTotali", window.myApp.risposteTotali);
     localStorage.setItem("media", window.myApp.media);
+  } else {
+    window.myApp.risposteSbagliate += 1;
+    console.log(window.myApp.risposteSbagliate);
   }
 }
 
@@ -153,14 +161,13 @@ function cambiaDomande() {
   }
 }
 
-// Configura l'handler del pulsante prosegui una sola volta
-document.querySelector(".prosegui").addEventListener("click", () => {
-  if (index > 0) {
-    // Se non è la prima domanda, valuta la risposta precedente
-    valutaRisposta();
-  }
-  cambiaDomande();
-});
+// // Configura l'handler del pulsante prosegui una sola volta
+// document.querySelector(".prosegui").addEventListener("click", () => {
+//   if (index > 0) {
+//     // Se non è la prima domanda, valuta la risposta precedente
+//     valutaRisposta();
+//   }
+// });
 
 // Avvia il quiz
 cambiaDomande();
@@ -182,6 +189,7 @@ function startTimer(duration) {
     if (timeLeft < 0) {
       textElement.textContent = "10";
       timeLeft = 10;
+      valutaRisposta();
       {
         clearInterval(countdown);
         startTimer(10);
@@ -200,11 +208,12 @@ function startTimer(duration) {
   }, 1000);
 }
 
-// Associa il timer ai bottoni senza avviarlo immediatamente
+// Associa il timer ai bottoni
 document.querySelectorAll(".prosegui").forEach((bottone) => {
   bottone.addEventListener("click", () => {
+    valutaRisposta(); // Valuta la risposta prima di cambiare domanda
     startTimer(10); // Ogni volta che si clicca, ferma il vecchio timer e ne avvia uno nuovo
-    cambiaRisposte(); // Cambia le risposte
+    cambiaDomande(); // Cambia domanda
   });
 });
 
