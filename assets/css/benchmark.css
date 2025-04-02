@@ -4,6 +4,7 @@ header {
 }
 
 body {
+  margin: 0;
   font-family: "Inter", sans-serif;
   background-color: rgba(0, 0, 0, 0.425);
 }
@@ -32,7 +33,6 @@ svg {
 }
 
 img {
-  margin-left: 5rem;
   width: 200px;
   height: auto;
   margin-bottom: 20px;
