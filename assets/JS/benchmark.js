@@ -219,4 +219,4 @@ document.querySelectorAll(".prosegui").forEach((bottone) => {
   });
 });
 
-startTimer(1000);
+startTimer(10);
