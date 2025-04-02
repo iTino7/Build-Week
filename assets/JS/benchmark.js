@@ -116,6 +116,7 @@ function valutaRisposta() {
     window.myApp.risposteTotali += 1;
   } else {
     window.myApp.risposteSbagliate += 1;
+    window.myApp.risposteTotali += 1;
     console.log(window.myApp.risposteSbagliate);
   }
   window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
