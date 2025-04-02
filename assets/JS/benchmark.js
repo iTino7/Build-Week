@@ -114,15 +114,14 @@ function valutaRisposta() {
       console.log(window.myApp.risposteSbagliate);
     }
     window.myApp.risposteTotali += 1;
-    window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
-    localStorage.setItem("risposteGiuste", window.myApp.risposteGiuste);
-
-    localStorage.setItem("risposteTotali", window.myApp.risposteTotali);
-    localStorage.setItem("media", window.myApp.media);
   } else {
     window.myApp.risposteSbagliate += 1;
     console.log(window.myApp.risposteSbagliate);
   }
+  window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
+  localStorage.setItem("risposteGiuste", window.myApp.risposteGiuste);
+  localStorage.setItem("risposteTotali", window.myApp.risposteTotali);
+  localStorage.setItem("media", window.myApp.media);
   localStorage.setItem("risposteSbagliate", window.myApp.risposteSbagliate);
 }
 
