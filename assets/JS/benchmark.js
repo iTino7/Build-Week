@@ -171,23 +171,27 @@ function startTimer(duration) {
   let timeLeft = duration;
   let textElement = document.getElementById("timer-text");
   let animation = document.getElementById("timer-animation");
-  let tempo = document.querySelectorAll("circle")[1];
+  let tempo = document.querySelectorAll("circle")[0];
 
   clearInterval(countdown);
   animation.beginElement();
   countdown = setInterval(() => {
-    textElement.textContent = timeLeft;
     timeLeft--;
+    textElement.textContent = timeLeft;
 
-    if (timeLeft < 1) {
-      clearInterval(countdown);
-      cambiaDomande();
-      startTimer(10);
+    if (timeLeft < 0) {
+      textElement.textContent = "10";
+      timeLeft = 10;
+      {
+        clearInterval(countdown);
+        startTimer(10);
+        cambiaDomande();
+      }
     }
-    if (timeLeft < 5) {
+    if (timeLeft <= 5) {
       tempo.style.stroke = "yellow";
     }
-    if (timeLeft < 3) {
+    if (timeLeft <= 3) {
       tempo.style.stroke = "red";
     }
     if (timeLeft > 5) {
