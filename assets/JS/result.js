@@ -49,3 +49,46 @@ circleWrong.setAttribute("stroke-dashoffset", svgColorWrong);
 circleWrong.setAttribute("transform", "rotate (270 50 50)");
 circleWrong.style.transition = "stroke-dashoffset 1s ease-in-out";
 circleWrong.style.stroke = "#C2128D";
+
+// tabella con risposte corrette
+document.addEventListener("DOMContentLoaded", function () {
+  const table = document.querySelector("table"); // Seleziona la tabella intera
+
+  // Esempi di domande e risposte
+  const domandeRisposte = [
+    { domanda: "JS è bastardo?", esito: "corretto" },
+    { domanda: "è semplice fare sta tabella?", esito: "sbagliato" },
+    { domanda: "CSS è complicato?", esito: "sbagliato" },
+    { domanda: "React è un framework?", esito: "sbagliato" },
+    { domanda: "HTML è un linguaggio di programmazione?", esito: "sbagliato" },
+    { domanda: "Git è utile per il controllo versione?", esito: "corretto" },
+    { domanda: "Node.js è una libreria JavaScript?", esito: "sbagliato" },
+    { domanda: "Una funzione in JS può restituire più valori?", esito: "corretto" },
+    { domanda: "JavaScript è un linguaggio tipizzato staticamente?", esito: "sbagliato" },
+    { domanda: "Vue.js è più veloce di Angular?", esito: "sbagliato" },
+    { domanda: "La programmazione a oggetti è un paradigma?", esito: "corretto" },
+    { domanda: "Il ciclo `for` è usato per iterare?", esito: "corretto" },
+  ];
+
+  domandeRisposte.forEach((item) => {
+    // Crea una nuova riga
+    const domandaRow = document.createElement("tr");
+
+    // Crea la cella della domanda
+    const domandaCell = document.createElement("td");
+    domandaCell.textContent = item.domanda;
+    domandaRow.appendChild(domandaCell);
+
+    // Crea la cella dell'esito
+    const esitoCell = document.createElement("td");
+    if (item.esito === "corretto") {
+      esitoCell.textContent = "✅";
+    } else {
+      esitoCell.textContent = "❌";
+    }
+    domandaRow.appendChild(esitoCell);
+
+    // Aggiungi la riga alla tabella
+    table.appendChild(domandaRow);
+  });
+});
