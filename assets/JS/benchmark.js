@@ -366,8 +366,9 @@ function startTimer(duration) {
   let textElement = document.getElementById("timer-text");
   let animation = document.getElementById("timer-animation");
   let tempo = document.querySelectorAll("circle")[0];
-  textElement.textContent = timeLeft;
+  tempo.style.stroke = "cyan";
   textElement.textContent = "10";
+  textElement.textContent = timeLeft;
   clearInterval(countdown);
   animation.beginElement();
   countdown = setInterval(() => {
