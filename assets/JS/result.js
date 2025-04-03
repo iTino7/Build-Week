@@ -5,7 +5,11 @@ const mediaTotale = localStorage.getItem("media");
 const votiNegativi = localStorage.getItem("risposteSbagliate");
 const ArrayGiuste = localStorage.getItem("risposteGiusteStr");
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr");
+// const rispTotali = JSON.parse(localStorage.getItem("risposteTotaliArr") || []);
 const rispTotali = localStorage.getItem("risposteTotaliArr");
+const palle = JSON.stringify(JSON.parse(rispTotali));
+console.log("rispTotali", typeof palle);
+
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
@@ -100,13 +104,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const domandeRisposte = [{}];
 
   for (let i = 0; i < votiTotali; i++) {
-    console.log("risp i", rispTotali);
+    console.log("risp i", rispTotali[i]);
     console.log(typeof rispTotali);
+
     console.log("array giuste: ", ArrayGiuste[i]);
+    console.log(typeof ArrayGiuste);
+
     if (rispTotali[i] === ArrayGiuste[i]) {
       domandeRisposte.domanda.push("giusto");
     }
     console.log("array sbagliate: ", ArraySbagliate[i]);
+    console.log(typeof ArraySbagliate);
+
     if (rispTotali[i] === ArraySbagliate[i]) {
       domandeRisposte.domanda.push("sbagliato");
     }
