@@ -51,8 +51,69 @@ circleWrong.style.transition = "stroke-dashoffset 1s ease-in-out";
 circleWrong.style.stroke = "#C2128D";
 
 // tabella con risposte corrette
+// document.addEventListener("DOMContentLoaded", function () {
+//   const table = document.querySelector("table"); // Seleziona la tabella intera
+//   const domandeRisposte = [{}];
+//   const rispTotali = localStorage.getItem("risposteTotaliArr");
+//   console.log(rispTotali);
+//   console.log(rispTotali.length);
+//   for (let i = 0; i < rispTotali.length; i++) {
+//     if (i === votiPositivi[i]) {
+//       console.log(i);
+//       domandeRisposte.domanda = "giusto";
+//       console.log(domandeRisposte);
+//     } else {
+//       console.log(i);
+//       domandeRisposte.domanda = "sbagliato";
+//       console.log(domandeRisposte);
+//     }
+//   }
+//   console.log(domandeRisposte);
+//   rispTotali.forEach((item) => {
+//     // Crea una nuova riga
+//     const domandaRow = document.createElement("tr");
+
+//     // Crea la cella della domanda
+//     const domandaCell = document.createElement("td");
+//     domandaCell.textContent = item;
+//     domandaRow.appendChild(domandaCell);
+
+//     // Crea la cella dell'esito
+//     const esitoCell = document.createElement("td");
+//     domandaRow.appendChild(esitoCell);
+
+//     // Aggiungi la riga alla tabella
+//     table.appendChild(domandaRow);
+//   });
+// });
+
+// tabella con risposte corrette
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
+
+  // json.parse() per convertire le stringhe in array o possiamo usare Split()
+  // proviamo ad usare map() per creare l'array
+  const rispTotali = localStorage.getItem("risposteTotaliArr");
+  const ArrayGiuste = JSON.parse(localStorage.getItem("risposteGiusteArr")) || [];
+  console.log(ArrayGiuste);
+  console.log(typeof ArrayGiuste);
+
+  const ArraySbagliate = JSON.parse(localStorage.getItem("risposteSbagliateArr")) || [];
+  console.log(ArraySbagliate);
+  console.log(typeof ArraySbagliate);
+
+  const domandeRisposte = [{}];
+
+  domandeRisposte.domanda = "ciao";
+  for (let i = 0; i < votiTotali; i++) {
+    if (i === ArrayGiuste[i]) {
+      domandeRisposte.domanda.push("giusto");
+    }
+    if (i === ArraySbagliate[i]) {
+      domandeRisposte.domanda.push("sbagliato");
+    }
+  }
+  console.log(domandeRisposte);
 
   domandeRisposte.forEach((item) => {
     // Crea una nuova riga
@@ -66,9 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Crea la cella dell'esito
     const esitoCell = document.createElement("td");
     if (item.esito === "corretto") {
-      esitoCell.textContent = "✅";
+      esitoCell.textContent = "giusto";
     } else {
-      esitoCell.textContent = "❌";
+      esitoCell.textContent = "sbaglato";
     }
     domandaRow.appendChild(esitoCell);
 
