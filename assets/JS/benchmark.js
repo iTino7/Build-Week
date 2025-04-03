@@ -263,6 +263,7 @@ if (difficulty === "easy") {
     ],
   };
 }
+
 let index = 0; //inizializiamo l'indice per scorrere le domande a 0
 
 window.myApp = window.myApp || {};
@@ -291,14 +292,14 @@ function valutaRisposta() {
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
       window.myApp.risposteGiuste += 1;
-      window.myApp.risposteGiusteStr.push(bottoneSelezionato.innerText);
-      window.myApp.risposteTotaliArr.push(bottoneSelezionato.innerText);
+      window.myApp.risposteGiusteStr.push(`${index}) ${bottoneSelezionato.innerText}`);
+      window.myApp.risposteTotaliArr.push(`${index}) ${bottoneSelezionato.innerText}`);
       console.log(window.myApp.risposteTotaliArr);
       console.log(window.myApp.risposteGiusteStr, "Giuste");
     } else {
       window.myApp.risposteSbagliate += 1;
-      window.myApp.risposteSbagliateStr.push(bottoneSelezionato.innerText);
-      window.myApp.risposteTotaliArr.push(bottoneSelezionato.innerText);
+      window.myApp.risposteSbagliateStr.push(`${index} ${bottoneSelezionato.innerText}`);
+      window.myApp.risposteTotaliArr.push(`${index} ${bottoneSelezionato.innerText}`);
       console.log(window.myApp.risposteTotaliArr);
       console.log(window.myApp.risposteSbagliate);
       console.log(window.myApp.risposteSbagliateStr, "rispsbagl");
