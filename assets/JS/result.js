@@ -58,44 +58,28 @@ circleWrong.style.stroke = "#C2128D";
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
-  const domandeRisposte = rispTotali.map((risposta) => {
-    // console.log("domanda", domanda);
-    // console.log("ArrayGiuste", ArrayGiuste);
-    // console.log(ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato");
-    // return {
-    //   domanda: domanda,
-    //   esito: ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato",
-    // };
-    let esito = "sbagliato";
-    for (let i = 0; i < ArrayGiuste.length; i++) {
-      if (risposta === ArrayGiuste[i]) {
-        esito = "corretto";
-      }
-    }
+  const domandeRisposte = rispTotali.map((risposta, index) => {
     return {
       risposta: risposta,
-      esito: esito,
+      esito: ArrayGiuste.includes(`${index + 1}`) ? "corretto" : "sbagliato",
     };
   });
 
   domandeRisposte.forEach((item) => {
     // Crea una nuova riga
-    const domandaRow = document.createElement("tr");
+    const rispostaRow = document.createElement("tr");
 
-    // Crea la cella della domanda
-    const domandaCell = document.createElement("td");
-    domandaCell.textContent = item.domanda;
-    domandaRow.appendChild(domandaCell);
+    // Crea la cella delle risposte
+    const rispostaCell = document.createElement("td");
+    rispostaCell.textContent = item.risposta;
+    rispostaRow.appendChild(rispostaCell);
 
     // Crea la cella dell'esito
     const esitoCell = document.createElement("td");
     esitoCell.innerHTML = item.esito === "corretto" ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
-    domandaRow.appendChild(esitoCell);
+    rispostaRow.appendChild(esitoCell);
 
     // Aggiungi la riga alla tabella
-    table.appendChild(domandaRow);
+    table.appendChild(rispostaRow);
   });
 });
-
-// esitoCell.innerHTML = `<i class="fas fa-times"></i>`;
-// esitoCell.innerHTML = `<i class="fas fa-check"></i>`;
