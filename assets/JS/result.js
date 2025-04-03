@@ -11,10 +11,10 @@ console.log("media totale: ", mediaTotale);
 const votiNegativi = localStorage.getItem("risposteSbagliate");
 console.log("voti negativi: ", votiNegativi);
 
-const ArrayGiuste = localStorage.getItem("risposteGiusteArr");
+const ArrayGiuste = localStorage.getItem("risposteGiusteStr");
 console.log("array giustre: ", ArrayGiuste);
 
-const ArraySbagliate = localStorage.getItem("risposteSbagliateArr");
+const ArraySbagliate = localStorage.getItem("risposteSbagliateStr");
 console.log("array sbagliate: ", ArraySbagliate);
 
 const percentualePositiva = mediaTotale;
