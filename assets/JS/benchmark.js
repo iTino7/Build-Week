@@ -267,10 +267,10 @@ let index = 0; //inizializiamo l'indice per scorrere le domande a 0
 
 window.myApp = window.myApp || {};
 window.myApp.risposteGiuste = 0;
-window.myApp.risposteGiusteStr = ["Giuste"];
+window.myApp.risposteGiusteStr = [];
 window.myApp.risposteSbagliate = 0;
-window.myApp.risposteSbagliateStr = ["Sbagliate"];
-window.myApp.risposteTotaliArr = ["Totali"];
+window.myApp.risposteSbagliateStr = [];
+window.myApp.risposteTotaliArr = [];
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 
@@ -320,7 +320,7 @@ function valutaRisposta() {
   localStorage.setItem("risposteSbagliate", window.myApp.risposteSbagliate);
   localStorage.setItem("risposteSbagliateStr", window.myApp.risposteSbagliateStr);
   localStorage.setItem("risposteGiusteStr", window.myApp.risposteGiusteStr);
-  localStorage.setItem("risposteTotali", window.myApp.risposteTotali);
+  localStorage.setItem("risposteTotaliArr", window.myApp.risposteTotaliArr);
 
   if (isNaN(window.myApp.media)) {
     window.myApp.media = 0;
