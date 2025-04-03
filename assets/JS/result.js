@@ -3,9 +3,11 @@ const votiPositivi = localStorage.getItem("risposteGiuste");
 const votiTotali = localStorage.getItem("risposteTotali");
 const mediaTotale = localStorage.getItem("media");
 const votiNegativi = localStorage.getItem("risposteSbagliate");
-const ArrayGiuste = localStorage.getItem("risposteGiusteStr");
-const ArraySbagliate = localStorage.getItem("risposteSbagliateStr");
+const ArrayGiuste = localStorage.getItem("risposteGiusteStr").split(",");
+const ArraySbagliate = localStorage.getItem("risposteSbagliateStr").split(",");
 const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
+console.log(rispTotali[3]);
+console.log(ArrayGiuste[3]);
 
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
