@@ -6,8 +6,6 @@ const votiNegativi = localStorage.getItem("risposteSbagliate");
 const ArrayGiuste = localStorage.getItem("risposteGiusteStr").split(",");
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr").split(",");
 const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
-console.log(rispTotali[3]);
-console.log(ArrayGiuste[3]);
 
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
@@ -61,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
   const domandeRisposte = rispTotali.map((domanda) => {
+    console.log("domanda", domanda);
+    console.log("ArrayGiuste", ArrayGiuste[domanda]);
     return {
       domanda: domanda,
       esito: ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato",
@@ -78,8 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Crea la cella dell'esito
     const esitoCell = document.createElement("td");
-    esitoCell.textContent = item.esito === "corretto" ? "Corretto" : "Sbagliato";
-
+    esitoCell.innerHTML = item.esito === "corretto" ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
     domandaRow.appendChild(esitoCell);
 
     // Aggiungi la riga alla tabella
