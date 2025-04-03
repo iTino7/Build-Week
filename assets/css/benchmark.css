@@ -91,6 +91,13 @@ button:hover {
   background: linear-gradient(0deg, rgba(144, 0, 123, 1) 0%, rgba(205, 1, 146, 1) 100%);
 }
 
+.esatto {
+  background: #4caf50;
+}
+
+.sbagliato {
+  background: #f44336;
+}
 .prosegui {
   text-align: end;
 }

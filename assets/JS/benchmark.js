@@ -293,31 +293,23 @@ function selected(e) {
 function valutaRisposta() {
   const domanda = domande.results[index - 1]; // Usa index-1 perché index è già stato incrementato
   const bottoneSelezionato = document.querySelector("button.selected:not(.prosegui)");
-
+  const bottoni = document.querySelectorAll("button:not(.prosegui button)");
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
       window.myApp.risposteGiuste += 1;
       window.myApp.risposteGiusteStr.push(`${index}`);
       window.myApp.risposteTotaliArr.push(`${bottoneSelezionato.innerText}`);
-      console.log(window.myApp.risposteTotaliArr);
-      console.log(window.myApp.risposteGiusteStr, "Giuste");
     } else {
       window.myApp.risposteSbagliate += 1;
       window.myApp.risposteSbagliateStr.push(`${index}`);
       window.myApp.risposteTotaliArr.push(`${bottoneSelezionato.innerText}`);
-      console.log(window.myApp.risposteTotaliArr);
-      console.log(window.myApp.risposteSbagliate);
-      console.log(window.myApp.risposteSbagliateStr, "rispsbagl");
     }
     window.myApp.risposteTotali += 1;
   } else {
     window.myApp.risposteSbagliate += 1;
     window.myApp.risposteTotaliArr.push("Non hai inserito una risposta");
     window.myApp.risposteSbagliateStr.push(`Non hai inserito una risposta`);
-    console.log(window.myApp.risposteTotaliArr);
     window.myApp.risposteTotali += 1;
-    console.log(window.myApp.risposteSbagliate);
-    console.log(window.myApp.risposteSbagliateStr);
   }
   window.myApp.media = (window.myApp.risposteGiuste / window.myApp.risposteTotali) * 100;
   localStorage.setItem("risposteGiuste", window.myApp.risposteGiuste);
@@ -327,6 +319,28 @@ function valutaRisposta() {
   localStorage.setItem("risposteSbagliateStr", window.myApp.risposteSbagliateStr);
   localStorage.setItem("risposteGiusteStr", window.myApp.risposteGiusteStr);
   localStorage.setItem("risposteTotaliArr", window.myApp.risposteTotaliArr);
+
+  if (bottoneSelezionato) {
+    if (bottoneSelezionato.innerText === domanda.correct_answer) {
+      bottoneSelezionato.classList.add("esatto");
+    } else {
+      bottoneSelezionato.classList.add("sbagliato");
+
+      bottoni.forEach((bottone) => {
+        if (bottone.innerText === domanda.correct_answer) {
+          bottone.classList.add("esatto");
+        }
+      });
+    }
+  } else {
+    bottoni.forEach((bottone) => {
+      if (bottone.innerText === domanda.correct_answer) {
+        bottone.classList.add("esatto");
+      } else {
+        bottone.classList.add("sbagliato");
+      }
+    });
+  }
 
   if (isNaN(window.myApp.media)) {
     window.myApp.media = 0;
@@ -345,7 +359,7 @@ function cambiaDomande() {
 
     //Creo le domande dinamicamente
     let myH1 = document.createElement("h1");
-    myH1.innerText = domanda.question;
+    myH1.innerHTML = domanda.question;
     document.querySelector(".box").appendChild(myH1);
 
     //Prendo le risposte e le mischio in modo che la risposta esatta sia sempre in una posizione diversa
@@ -355,7 +369,7 @@ function cambiaDomande() {
     //Creo i bottoni con le domande
     for (let i = 0; i < risposte.length; i++) {
       let btnAnswer = document.createElement("button");
-      btnAnswer.innerText = risposte[i];
+      btnAnswer.innerHTML = risposte[i];
       document.getElementsByClassName("button")[0].appendChild(btnAnswer);
 
       // Aggiungi event listener a ogni bottone di risposta
@@ -385,19 +399,20 @@ function startTimer(duration) {
   textElement.textContent = timeLeft;
   clearInterval(countdown);
   animation.beginElement();
+
   countdown = setInterval(() => {
     timeLeft--;
     textElement.textContent = timeLeft;
 
-    if (timeLeft < 0) {
-      textElement.textContent = "10";
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+      textElement.textContent;
       timeLeft = 10;
       valutaRisposta();
-      {
-        clearInterval(countdown);
+      setTimeout(() => {
         startTimer(10);
         cambiaDomande();
-      }
+      }, 3000);
     }
     if (timeLeft <= 5) {
       tempo.style.stroke = "yellow";
@@ -411,12 +426,15 @@ function startTimer(duration) {
   }, 1000);
 }
 
-// Associa il timer ai bottoni
+// Associa il timer al bottone prosegui
 document.querySelectorAll(".prosegui").forEach((bottone) => {
   bottone.addEventListener("click", () => {
+    clearInterval(countdown);
     valutaRisposta(); // Valuta la risposta prima di cambiare domanda
-    startTimer(10); // Ogni volta che si clicca, ferma il vecchio timer e ne avvia uno nuovo
-    cambiaDomande(); // Cambia domanda
+    setTimeout(() => {
+      startTimer(10); // Ogni volta che si clicca, ferma il vecchio timer e ne avvia uno nuovo
+      cambiaDomande(); // Cambia domanda
+    }, 1000);
   });
 });
 
