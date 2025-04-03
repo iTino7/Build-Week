@@ -1,8 +1,22 @@
 // prendi i dati
 const votiPositivi = localStorage.getItem("risposteGiuste");
+console.log("voti positivi: ", votiPositivi);
+
 const votiTotali = localStorage.getItem("risposteTotali");
+console.log("voti totali: ", votiTotali);
+
 const mediaTotale = localStorage.getItem("media");
+console.log("media totale: ", mediaTotale);
+
 const votiNegativi = localStorage.getItem("risposteSbagliate");
+console.log("voti negativi: ", votiNegativi);
+
+const ArrayGiuste = localStorage.getItem("risposteGiusteArr");
+console.log("array giustre: ", ArrayGiuste);
+
+const ArraySbagliate = localStorage.getItem("risposteSbagliateArr");
+console.log("array sbagliate: ", ArraySbagliate);
+
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
@@ -91,16 +105,9 @@ circleWrong.style.stroke = "#C2128D";
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
-  // json.parse() per convertire le stringhe in array o possiamo usare Split()
+  // json.parse() per convertire le stringhe in array o possiamo usare Split
   // proviamo ad usare map() per creare l'array
   const rispTotali = localStorage.getItem("risposteTotaliArr");
-  const ArrayGiuste = JSON.parse(localStorage.getItem("risposteGiusteArr")) || [];
-  console.log(ArrayGiuste);
-  console.log(typeof ArrayGiuste);
-
-  const ArraySbagliate = JSON.parse(localStorage.getItem("risposteSbagliateArr")) || [];
-  console.log(ArraySbagliate);
-  console.log(typeof ArraySbagliate);
 
   const domandeRisposte = [{}];
 
