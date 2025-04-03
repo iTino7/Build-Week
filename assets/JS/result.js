@@ -54,8 +54,6 @@ circleWrong.style.stroke = "#C2128D";
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
-  // Esempi di domande e risposte
-
   domandeRisposte.forEach((item) => {
     // Crea una nuova riga
     const domandaRow = document.createElement("tr");
