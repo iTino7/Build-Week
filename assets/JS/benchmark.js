@@ -291,23 +291,23 @@ function valutaRisposta() {
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
       window.myApp.risposteGiuste += 1;
-      window.myApp.risposteGiusteStr.push(`${index}`);
+      window.myApp.risposteGiusteStr.push(bottoneSelezionato.innerText);
       window.myApp.risposteTotaliArr.push(bottoneSelezionato.innerText);
       console.log(window.myApp.risposteTotaliArr);
-      console.log(window.myApp.risposteGiusteStr);
+      console.log(window.myApp.risposteGiusteStr, "Giuste");
     } else {
       window.myApp.risposteSbagliate += 1;
-      window.myApp.risposteSbagliateStr.push(`${index}`);
+      window.myApp.risposteSbagliateStr.push(bottoneSelezionato.innerText);
       window.myApp.risposteTotaliArr.push(bottoneSelezionato.innerText);
       console.log(window.myApp.risposteTotaliArr);
       console.log(window.myApp.risposteSbagliate);
-      console.log(window.myApp.risposteSbagliateStr);
+      console.log(window.myApp.risposteSbagliateStr, "rispsbagl");
     }
     window.myApp.risposteTotali += 1;
   } else {
     window.myApp.risposteSbagliate += 1;
     window.myApp.risposteTotaliArr.push("Non hai inserito una risposta");
-    window.myApp.risposteSbagliateStr.push(`${index} Non hai inserito una risposta`);
+    window.myApp.risposteSbagliateStr.push(`Non hai inserito una risposta`);
     console.log(window.myApp.risposteTotaliArr);
     window.myApp.risposteTotali += 1;
     console.log(window.myApp.risposteSbagliate);
