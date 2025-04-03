@@ -6,6 +6,7 @@ const votiNegativi = localStorage.getItem("risposteSbagliate");
 const ArrayGiuste = localStorage.getItem("risposteGiusteStr").split(",");
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr").split(",");
 const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
+const domTotali = localStorage.getItem("domande").split(",");
 
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
@@ -58,8 +59,15 @@ circleWrong.style.stroke = "#C2128D";
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
+  // const domande = domTotali.map((domanda) => {
+  //   return {
+  //     domande: domanda,
+  //   };
+  // });
+
   const domandeRisposte = rispTotali.map((risposta, index) => {
     return {
+      domande: domTotali[index],
       risposta: risposta,
       esito: ArrayGiuste.includes(`${index + 1}`) ? "corretto" : "sbagliato",
     };
@@ -68,6 +76,11 @@ document.addEventListener("DOMContentLoaded", function () {
   domandeRisposte.forEach((item) => {
     // Crea una nuova riga
     const rispostaRow = document.createElement("tr");
+
+    // Crea la cella delle domande
+    const domandaCell = document.createElement("td");
+    domandaCell.textContent = item.domande;
+    rispostaRow.appendChild(domandaCell);
 
     // Crea la cella delle risposte
     const rispostaCell = document.createElement("td");
