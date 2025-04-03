@@ -270,6 +270,7 @@ window.myApp.risposteGiuste = 0;
 window.myApp.risposteGiusteStr = ["Giuste"];
 window.myApp.risposteSbagliate = 0;
 window.myApp.risposteSbagliateStr = ["Sbagliate"];
+window.myApp.risposteTotaliArr = ["Totali"];
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 
@@ -290,18 +291,24 @@ function valutaRisposta() {
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
       window.myApp.risposteGiuste += 1;
-      window.myApp.risposteGiusteStr.push(`${index} ${bottoneSelezionato.innerText}`);
+      window.myApp.risposteGiusteStr.push(`${index}`);
+      window.myApp.risposteTotaliArr.push(bottoneSelezionato.innerText);
+      console.log(window.myApp.risposteTotaliArr);
       console.log(window.myApp.risposteGiusteStr);
     } else {
       window.myApp.risposteSbagliate += 1;
-      window.myApp.risposteSbagliateStr.push(`${index} ${bottoneSelezionato.innerText}`);
+      window.myApp.risposteSbagliateStr.push(`${index}`);
+      window.myApp.risposteTotaliArr.push(`${bottoneSelezionato.innerText}`);
+      console.log(window.myApp.risposteTotaliArr);
       console.log(window.myApp.risposteSbagliate);
       console.log(window.myApp.risposteSbagliateStr);
     }
     window.myApp.risposteTotali += 1;
   } else {
     window.myApp.risposteSbagliate += 1;
+    window.myApp.risposteTotaliArr.push("Non hai inserito una risposta");
     window.myApp.risposteSbagliateStr.push(`${index} Non hai inserito una risposta`);
+    console.log(window.myApp.risposteTotaliArr);
     window.myApp.risposteTotali += 1;
     console.log(window.myApp.risposteSbagliate);
     console.log(window.myApp.risposteSbagliateStr);
@@ -313,6 +320,7 @@ function valutaRisposta() {
   localStorage.setItem("risposteSbagliate", window.myApp.risposteSbagliate);
   localStorage.setItem("risposteSbagliateStr", window.myApp.risposteSbagliateStr);
   localStorage.setItem("risposteGiusteStr", window.myApp.risposteGiusteStr);
+  localStorage.setItem("risposteTotali", window.myApp.risposteTotali);
 
   if (isNaN(window.myApp.media)) {
     window.myApp.media = 0;
