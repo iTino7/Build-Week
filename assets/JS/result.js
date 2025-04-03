@@ -1,22 +1,11 @@
 // prendi i dati
 const votiPositivi = localStorage.getItem("risposteGiuste");
-console.log("voti positivi: ", votiPositivi);
-
 const votiTotali = localStorage.getItem("risposteTotali");
-console.log("voti totali: ", votiTotali);
-
 const mediaTotale = localStorage.getItem("media");
-console.log("media totale: ", mediaTotale);
-
 const votiNegativi = localStorage.getItem("risposteSbagliate");
-console.log("voti negativi: ", votiNegativi);
-
 const ArrayGiuste = localStorage.getItem("risposteGiusteStr");
-console.log("array giustre: ", ArrayGiuste);
-
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr");
-console.log("array sbagliate: ", ArraySbagliate);
-
+const rispTotali = localStorage.getItem("risposteTotaliArr");
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
@@ -107,16 +96,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // json.parse() per convertire le stringhe in array o possiamo usare Split
   // proviamo ad usare map() per creare l'array
-  const rispTotali = localStorage.getItem("risposteTotaliArr");
 
   const domandeRisposte = [{}];
 
-  domandeRisposte.domanda = "ciao";
   for (let i = 0; i < votiTotali; i++) {
-    if (i === ArrayGiuste[i]) {
+    console.log("risp i", rispTotali);
+    console.log(typeof rispTotali);
+    console.log("array giuste: ", ArrayGiuste[i]);
+    if (rispTotali[i] === ArrayGiuste[i]) {
       domandeRisposte.domanda.push("giusto");
     }
-    if (i === ArraySbagliate[i]) {
+    console.log("array sbagliate: ", ArraySbagliate[i]);
+    if (rispTotali[i] === ArraySbagliate[i]) {
       domandeRisposte.domanda.push("sbagliato");
     }
   }
