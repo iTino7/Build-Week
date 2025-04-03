@@ -6,7 +6,6 @@ const votiNegativi = localStorage.getItem("risposteSbagliate");
 const ArrayGiuste = localStorage.getItem("risposteGiusteStr");
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr");
 const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
-console.log("risp totali: ", rispTotali);
 
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
@@ -56,69 +55,15 @@ circleWrong.style.transition = "stroke-dashoffset 1s ease-in-out";
 circleWrong.style.stroke = "#C2128D";
 
 // tabella con risposte corrette
-// document.addEventListener("DOMContentLoaded", function () {
-//   const table = document.querySelector("table"); // Seleziona la tabella intera
-//   const domandeRisposte = [{}];
-//   const rispTotali = localStorage.getItem("risposteTotaliArr");
-//   console.log(rispTotali);
-//   console.log(rispTotali.length);
-//   for (let i = 0; i < rispTotali.length; i++) {
-//     if (i === votiPositivi[i]) {
-//       console.log(i);
-//       domandeRisposte.domanda = "giusto";
-//       console.log(domandeRisposte);
-//     } else {
-//       console.log(i);
-//       domandeRisposte.domanda = "sbagliato";
-//       console.log(domandeRisposte);
-//     }
-//   }
-//   console.log(domandeRisposte);
-//   rispTotali.forEach((item) => {
-//     // Crea una nuova riga
-//     const domandaRow = document.createElement("tr");
-
-//     // Crea la cella della domanda
-//     const domandaCell = document.createElement("td");
-//     domandaCell.textContent = item;
-//     domandaRow.appendChild(domandaCell);
-
-//     // Crea la cella dell'esito
-//     const esitoCell = document.createElement("td");
-//     domandaRow.appendChild(esitoCell);
-
-//     // Aggiungi la riga alla tabella
-//     table.appendChild(domandaRow);
-//   });
-// });
-
-// tabella con risposte corrette
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
-  // json.parse() per convertire le stringhe in array o possiamo usare Split
-  // proviamo ad usare map() per creare l'array
-
-  const domandeRisposte = [{}];
-
-  for (let i = 0; i < votiTotali; i++) {
-    console.log("risp i", rispTotali[i]);
-    console.log(typeof rispTotali);
-
-    console.log("array giuste: ", ArrayGiuste[i]);
-    console.log(typeof ArrayGiuste);
-
-    if (rispTotali[i] === ArrayGiuste[i]) {
-      domandeRisposte.domanda.push("giusto");
-    }
-    console.log("array sbagliate: ", ArraySbagliate[i]);
-    console.log(typeof ArraySbagliate);
-
-    if (rispTotali[i] === ArraySbagliate[i]) {
-      domandeRisposte.domanda.push("sbagliato");
-    }
-  }
-  console.log(domandeRisposte);
+  const domandeRisposte = rispTotali.map((domanda) => {
+    return {
+      domanda: domanda,
+      esito: ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato",
+    };
+  });
 
   domandeRisposte.forEach((item) => {
     // Crea una nuova riga
@@ -131,14 +76,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Crea la cella dell'esito
     const esitoCell = document.createElement("td");
-    if (item.esito === "corretto") {
-      esitoCell.textContent = "giusto";
-    } else {
-      esitoCell.textContent = "sbagliato";
-    }
+    esitoCell.textContent = item.esito === "corretto" ? "Corretto" : "Sbagliato";
+
     domandaRow.appendChild(esitoCell);
 
     // Aggiungi la riga alla tabella
     table.appendChild(domandaRow);
   });
 });
+
+// esitoCell.innerHTML = `<i class="fas fa-times"></i>`;
+// esitoCell.innerHTML = `<i class="fas fa-check"></i>`;
