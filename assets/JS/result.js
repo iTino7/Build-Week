@@ -58,12 +58,23 @@ circleWrong.style.stroke = "#C2128D";
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
 
-  const domandeRisposte = rispTotali.map((domanda) => {
-    console.log("domanda", domanda);
-    console.log("ArrayGiuste", ArrayGiuste[domanda]);
+  const domandeRisposte = rispTotali.map((risposta) => {
+    // console.log("domanda", domanda);
+    // console.log("ArrayGiuste", ArrayGiuste);
+    // console.log(ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato");
+    // return {
+    //   domanda: domanda,
+    //   esito: ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato",
+    // };
+    let esito = "sbagliato";
+    for (let i = 0; i < ArrayGiuste.length; i++) {
+      if (risposta === ArrayGiuste[i]) {
+        esito = "corretto";
+      }
+    }
     return {
-      domanda: domanda,
-      esito: ArrayGiuste.includes(domanda) ? "corretto" : "sbagliato",
+      risposta: risposta,
+      esito: esito,
     };
   });
 
