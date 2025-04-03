@@ -272,9 +272,14 @@ window.myApp.risposteGiusteStr = [];
 window.myApp.risposteSbagliate = 0;
 window.myApp.risposteSbagliateStr = [];
 window.myApp.risposteTotaliArr = [];
+window.myApp.domande = [];
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 
+for (let i = 0; i < domande.results.length; i++) {
+  window.myApp.domande.push(domande.results[i].question);
+}
+console.log(window.myApp.domande);
 // Funzione per gestire la selezione delle risposte
 function selected(e) {
   document.querySelectorAll("button:not(.prosegui)").forEach((bottone) => {
