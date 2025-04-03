@@ -298,7 +298,7 @@ function valutaRisposta() {
     } else {
       window.myApp.risposteSbagliate += 1;
       window.myApp.risposteSbagliateStr.push(`${index}`);
-      window.myApp.risposteTotaliArr.push(`${bottoneSelezionato.innerText}`);
+      window.myApp.risposteTotaliArr.push(bottoneSelezionato.innerText);
       console.log(window.myApp.risposteTotaliArr);
       console.log(window.myApp.risposteSbagliate);
       console.log(window.myApp.risposteSbagliateStr);
