@@ -12,12 +12,12 @@ const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
 // inserisci le percentuali nelle valutazioni
-document.getElementById("percentualeCorretta").innerHTML = `${percentualePositiva}%`;
-document.getElementById("percentualeNegativa").innerHTML = `${percentualeNegativa}%`;
+document.getElementById("percentualeCorretta").innerHTML = `${Math.round(percentualePositiva)}%`;
+document.getElementById("percentualeNegativa").innerHTML = `${Math.round(percentualeNegativa)}%`;
 
 // inserisci i voti nelle valutazioni
-document.getElementById("correctAnswerSpan").innerHTML = `${votiPositivi}/10`;
-document.getElementById("wrongAnswerSpan").innerHTML = `${votiNegativi}/10`;
+document.getElementById("correctAnswerSpan").innerHTML = `${votiPositivi}/${votiTotali}`;
+document.getElementById("wrongAnswerSpan").innerHTML = `${votiNegativi}/${votiTotali}`;
 
 // vedere se sei primosso o bocciato
 if (mediaTotale > 60) {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Crea la cella delle risposte
     const rispostaCell = document.createElement("td");
-    rispostaCell.innerHTML = item.risposta;
+    rispostaCell.innerText = item.risposta;
     rispostaRow.appendChild(rispostaCell);
 
     // Crea la cella dell'esito
