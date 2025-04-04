@@ -275,11 +275,12 @@ window.myApp.risposteTotaliArr = [];
 window.myApp.domande = [];
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
-
+correct_answer_Array = [];
 for (let i = 0; i < domande.results.length; i++) {
   window.myApp.domande.push(domande.results[i].question);
 }
 localStorage.setItem("domande", window.myApp.domande);
+
 // Funzione per gestire la selezione delle risposte
 function selected(e) {
   document.querySelectorAll("button:not(.prosegui)").forEach((bottone) => {
@@ -289,13 +290,19 @@ function selected(e) {
   bottone.classList.add("selected");
 }
 
+function decodeHTML(html) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
 // Funzione per valutare la risposta corrente
 function valutaRisposta() {
   const domanda = domande.results[index - 1]; // Usa index-1 perché index è già stato incrementato
   const bottoneSelezionato = document.querySelector("button.selected:not(.prosegui)");
   const bottoni = document.querySelectorAll("button:not(.prosegui button)");
   if (bottoneSelezionato) {
-    if (bottoneSelezionato.innerText === domanda.correct_answer) {
+    if (bottoneSelezionato.innerText === decodeHTML(domanda.correct_answer)) {
       window.myApp.risposteGiuste += 1;
       window.myApp.risposteGiusteStr.push(`${index}`);
       window.myApp.risposteTotaliArr.push(`${bottoneSelezionato.innerText}`);
@@ -321,20 +328,20 @@ function valutaRisposta() {
   localStorage.setItem("risposteTotaliArr", window.myApp.risposteTotaliArr);
 
   if (bottoneSelezionato) {
-    if (bottoneSelezionato.innerText === domanda.correct_answer) {
+    if (bottoneSelezionato.innerText === decodeHTML(domanda.correct_answer)) {
       bottoneSelezionato.classList.add("esatto");
     } else {
       bottoneSelezionato.classList.add("sbagliato");
 
       bottoni.forEach((bottone) => {
-        if (bottone.innerText === domanda.correct_answer) {
+        if (bottone.innerText === decodeHTML(domanda.correct_answer)) {
           bottone.classList.add("esatto");
         }
       });
     }
   } else {
     bottoni.forEach((bottone) => {
-      if (bottone.innerText === domanda.correct_answer) {
+      if (bottone.innerText === decodeHTML(domanda.correct_answer)) {
         bottone.classList.add("esatto");
       } else {
         bottone.classList.add("sbagliato");
@@ -408,6 +415,7 @@ function startTimer(duration) {
       clearInterval(countdown);
       textElement.textContent;
       timeLeft = 10;
+
       valutaRisposta();
       setTimeout(() => {
         startTimer(10);
@@ -430,6 +438,7 @@ function startTimer(duration) {
 document.querySelectorAll(".prosegui").forEach((bottone) => {
   bottone.addEventListener("click", () => {
     clearInterval(countdown);
+
     valutaRisposta(); // Valuta la risposta prima di cambiare domanda
     setTimeout(() => {
       startTimer(10); // Ogni volta che si clicca, ferma il vecchio timer e ne avvia uno nuovo
