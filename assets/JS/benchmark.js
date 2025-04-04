@@ -279,7 +279,7 @@ window.myApp.media = 0;
 for (let i = 0; i < domande.results.length; i++) {
   window.myApp.domande.push(domande.results[i].question);
 }
-console.log(window.myApp.domande);
+console.log("domande", window.myApp.domande);
 // Funzione per gestire la selezione delle risposte
 function selected(e) {
   document.querySelectorAll("button:not(.prosegui)").forEach((bottone) => {
@@ -319,6 +319,7 @@ function valutaRisposta() {
   localStorage.setItem("risposteSbagliateStr", window.myApp.risposteSbagliateStr);
   localStorage.setItem("risposteGiusteStr", window.myApp.risposteGiusteStr);
   localStorage.setItem("risposteTotaliArr", window.myApp.risposteTotaliArr);
+  localStorage.setItem("domande", window.myApp.domande);
 
   if (bottoneSelezionato) {
     if (bottoneSelezionato.innerText === domanda.correct_answer) {
