@@ -2,7 +2,12 @@
 const votiPositivi = localStorage.getItem("risposteGiuste");
 const votiTotali = localStorage.getItem("risposteTotali");
 const mediaTotale = localStorage.getItem("media");
-const votiNegativi = votiTotali - votiPositivi;
+const votiNegativi = localStorage.getItem("risposteSbagliate");
+const ArrayGiuste = localStorage.getItem("risposteGiusteStr").split(",");
+const ArraySbagliate = localStorage.getItem("risposteSbagliateStr").split(",");
+const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
+const domTotali = localStorage.getItem("domande").split(",");
+
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
 
@@ -49,3 +54,39 @@ circleWrong.setAttribute("stroke-dashoffset", svgColorWrong);
 circleWrong.setAttribute("transform", "rotate (270 50 50)");
 circleWrong.style.transition = "stroke-dashoffset 1s ease-in-out";
 circleWrong.style.stroke = "#C2128D";
+
+// tabella con risposte corrette
+document.addEventListener("DOMContentLoaded", function () {
+  const table = document.querySelector("table"); // Seleziona la tabella intera
+
+  const domandeRisposte = rispTotali.map((risposta, index) => {
+    return {
+      domande: domTotali[index],
+      risposta: risposta,
+      esito: ArrayGiuste.includes(`${index + 1}`) ? "corretto" : "sbagliato",
+    };
+  });
+
+  domandeRisposte.forEach((item) => {
+    // Crea una nuova riga
+    const rispostaRow = document.createElement("tr");
+
+    // Crea la cella delle domande
+    const domandaCell = document.createElement("td");
+    domandaCell.textContent = item.domande;
+    rispostaRow.appendChild(domandaCell);
+
+    // Crea la cella delle risposte
+    const rispostaCell = document.createElement("td");
+    rispostaCell.textContent = item.risposta;
+    rispostaRow.appendChild(rispostaCell);
+
+    // Crea la cella dell'esito
+    const esitoCell = document.createElement("td");
+    esitoCell.innerHTML = item.esito === "corretto" ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
+    rispostaRow.appendChild(esitoCell);
+
+    // Aggiungi la riga alla tabella
+    table.appendChild(rispostaRow);
+  });
+});

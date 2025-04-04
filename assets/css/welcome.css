@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -25,7 +26,8 @@ body {
   padding: 20px;
 }
 h1 {
-  font-size: 70px;
+  font-size: 60px;
+  font-family: "Outfit", sans-serif;
   font-weight: 400;
   margin-bottom: 50px;
 }
@@ -51,8 +53,39 @@ ul li {
   font-size: 18px;
   margin-bottom: 12px;
 }
+
+#difficulty-block {
+  margin-top: 20px;
+}
+
+#difficulty {
+  display: inline-block;
+  width: 9rem;
+  margin: 20px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  color: black;
+  background-color: #00e6ff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 230, 255, 0.8);
+  cursor: pointer;
+  text-align: center;
+}
+
+#difficulty:focus {
+  outline: none;
+  box-shadow: 0px 0px 15px rgba(0, 230, 255, 1);
+}
+
+#difficulty option {
+  font-size: 16px;
+  color: black;
+  background-color: white;
+}
+
 .check-block {
-  margin-top: 60px;
   display: block;
 }
 .check-block input {

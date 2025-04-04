@@ -1,19 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 header {
   position: relative;
 }
 
 body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
   background-color: rgba(0, 0, 0, 0.425);
 }
 svg {
   position: absolute;
-  top: 10px;
+  top: -10px;
+
   right: 20px;
   width: 10rem;
   height: 10rem;
   text-align: center;
   opacity: 1;
-  transition: opacity 1s linear;
+  transition: opacity linear;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
 
 #timer {
@@ -23,7 +29,7 @@ svg {
   padding-top: 1.5rem;
 }
 
-span {
+.viola {
   color: #ff33a3;
 }
 
@@ -33,7 +39,9 @@ img {
   margin-bottom: 20px;
 }
 h1 {
-  font-size: 50px;
+  margin-top: 5rem;
+  font-size: 60px;
+  font-family: "Outfit", sans-serif;
   margin-bottom: 10px;
 }
 h1 span {
@@ -67,23 +75,31 @@ button {
   text-align: center;
   border-radius: 30px;
   font-size: larger;
-  background-color: transparent;
+  background-color: rgba(128, 128, 128, 0.175);
   color: white;
   margin-bottom: 2rem;
   margin-right: 2rem;
   min-width: 33.3%;
   max-width: 33.3%;
   min-height: 4rem;
-  border-color: 50px, solid, white;
+  /* border-color: 50px, solid, white; */
+  box-shadow: 0px -2px 0px 1px rgba(255, 255, 255, 0.75);
 }
 button:hover {
-  background-color: #ff33a3;
+  background: linear-gradient(0deg, #d20094 0%, #900080 100%);
 }
 
 .selected {
-  background-color: #ff33a3;
+  background: linear-gradient(0deg, #d20094 0%, #900080 100%);
 }
 
+.esatto {
+  background: #1ea031ce;
+}
+
+.sbagliato {
+  background: #c92334b5;
+}
 .prosegui {
   text-align: end;
 }
@@ -97,6 +113,7 @@ button:hover {
 }
 
 .button {
+  font-size: 16x;
   max-width: 65rem;
   margin-left: auto;
   margin-right: auto;
