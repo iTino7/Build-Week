@@ -7,8 +7,6 @@ const ArrayGiuste = localStorage.getItem("risposteGiusteStr").split(",");
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr").split(",");
 const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
 const domTotali = localStorage.getItem("domande").split(",");
-console.log("domande", domTotali);
-console.log("tipo domande", typeof domTotali);
 
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
@@ -60,12 +58,6 @@ circleWrong.style.stroke = "#C2128D";
 // tabella con risposte corrette
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.querySelector("table"); // Seleziona la tabella intera
-
-  // const domande = domTotali.map((domanda) => {
-  //   return {
-  //     domande: domanda,
-  //   };
-  // });
 
   const domandeRisposte = rispTotali.map((risposta, index) => {
     return {
