@@ -7,6 +7,8 @@ const ArrayGiuste = localStorage.getItem("risposteGiusteStr").split(",");
 const ArraySbagliate = localStorage.getItem("risposteSbagliateStr").split(",");
 const rispTotali = localStorage.getItem("risposteTotaliArr").split(",");
 const domTotali = localStorage.getItem("domande").split(",");
+console.log("domande", domTotali);
+console.log("tipo domande", typeof domTotali);
 
 const percentualePositiva = mediaTotale;
 const percentualeNegativa = 100 - mediaTotale;
