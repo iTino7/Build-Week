@@ -73,12 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Crea la cella delle domande
     const domandaCell = document.createElement("td");
-    domandaCell.textContent = item.domande;
+    domandaCell.innerHTML = item.domande;
     rispostaRow.appendChild(domandaCell);
 
     // Crea la cella delle risposte
     const rispostaCell = document.createElement("td");
-    rispostaCell.textContent = item.risposta;
+    rispostaCell.innerHTML = item.risposta;
     rispostaRow.appendChild(rispostaCell);
 
     // Crea la cella dell'esito
