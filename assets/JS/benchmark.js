@@ -94,6 +94,22 @@ if (difficulty === "easy") {
         type: "multiple",
         difficulty: "medium",
         category: "Science: Computers",
+        question: "While Apple was formed in California, in which western state was Microsoft founded?",
+        correct_answer: "New Mexico",
+        incorrect_answers: ["Washington", "Colorado", "Arizona"],
+      },
+      {
+        type: "multiple",
+        difficulty: "medium",
+        category: "Science: Computers",
+        question: "On which day did the World Wide Web go online?",
+        correct_answer: "December 20 1990",
+        incorrect_answers: ["December 17 1996", "November 12 1990", "November 24 1995"],
+      },
+      {
+        type: "multiple",
+        difficulty: "medium",
+        category: "Science: Computers",
         question: "What is the number of keys on a standard Windows Keyboard?",
         correct_answer: "104",
         incorrect_answers: ["64", "94", "76"],
@@ -102,7 +118,7 @@ if (difficulty === "easy") {
         type: "multiple",
         difficulty: "medium",
         category: "Science: Computers",
-        question: "In HTML, which non-standard tag used to be be used to make elements scroll across the viewport?",
+        question: "In HTML which non-standard tag used to be be used to make elements scroll across the viewport?",
         correct_answer: "&lt;marquee&gt;&lt;/marquee&gt;",
         incorrect_answers: ["&lt;scroll&gt;&lt;/scroll&gt;", "&lt;move&gt;&lt;/move&gt;", "&lt;slide&gt;&lt;/slide&gt;"],
       },
@@ -114,6 +130,7 @@ if (difficulty === "easy") {
         correct_answer: "False",
         incorrect_answers: ["True"],
       },
+
       {
         type: "boolean",
         difficulty: "medium",
@@ -180,6 +197,38 @@ if (difficulty === "easy") {
   domande = {
     response_code: 0,
     results: [
+      {
+        type: "multiple",
+        difficulty: "hard",
+        category: "Science: Computers",
+        question: "What internet protocol was documented in RFC 1459?",
+        correct_answer: "IRC",
+        incorrect_answers: ["HTTP", "HTTPS", "FTP"],
+      },
+      {
+        type: "multiple",
+        difficulty: "hard",
+        category: "Science: Computers",
+        question: "Dutch computer scientist Mark Overmars is known for creating which game development engine?",
+        correct_answer: "Game Maker",
+        incorrect_answers: ["Stencyl", "Construct", "Torque 2D"],
+      },
+      {
+        type: "multiple",
+        difficulty: "hard",
+        category: "Science: Computers",
+        question: "Which of these names was an actual codename for a cancelled Microsoft project?",
+        correct_answer: "Neptune",
+        incorrect_answers: ["Enceladus", "Pollux", "Saturn"],
+      },
+      {
+        type: "multiple",
+        difficulty: "hard",
+        category: "Science: Computers",
+        question: "What type of sound chip does the Super Nintendo Entertainment System (SNES) have?",
+        correct_answer: "ADPCM Sampler",
+        incorrect_answers: ["FM Synthesizer", "Programmable Sound Generator (PSG)", "PCM Sampler"],
+      },
       {
         type: "multiple",
         difficulty: "hard",
@@ -276,8 +325,10 @@ window.myApp.domande = [];
 window.myApp.risposteTotali = 0;
 window.myApp.media = 0;
 correct_answer_Array = [];
+numeroDomande = 0;
 for (let i = 0; i < domande.results.length; i++) {
   window.myApp.domande.push(domande.results[i].question);
+  numeroDomande += 1;
 }
 localStorage.setItem("domande", window.myApp.domande);
 
@@ -295,6 +346,11 @@ function decodeHTML(html) {
   txt.innerHTML = html;
   return txt.value;
 }
+
+//.
+// aggiungere innerText
+// fare round
+// fare dinimica domande totali
 
 // Funzione per valutare la risposta corrente
 function valutaRisposta() {
@@ -385,6 +441,8 @@ function cambiaDomande() {
 
     let questionCounter = document.querySelector(".index");
     questionCounter.textContent = `${index + 1}`;
+    let questionTotal = document.querySelector(".viola");
+    questionTotal.textContent = `/ ${numeroDomande}`;
     index++;
   } else {
     window.open(`result.html`, `_self`);
