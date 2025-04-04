@@ -347,11 +347,6 @@ function decodeHTML(html) {
   return txt.value;
 }
 
-//.
-// aggiungere innerText
-// fare round
-// fare dinimica domande totali
-
 // Funzione per valutare la risposta corrente
 function valutaRisposta() {
   const domanda = domande.results[index - 1]; // Usa index-1 perché index è già stato incrementato
