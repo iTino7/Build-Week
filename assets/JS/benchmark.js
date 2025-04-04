@@ -279,7 +279,6 @@ window.myApp.media = 0;
 for (let i = 0; i < domande.results.length; i++) {
   window.myApp.domande.push(domande.results[i].question);
 }
-console.log("domande", window.myApp.domande);
 localStorage.setItem("domande", window.myApp.domande);
 // Funzione per gestire la selezione delle risposte
 function selected(e) {
